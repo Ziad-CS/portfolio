@@ -1,0 +1,256 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
+/* main::before {
+  content: "";
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  border-radius: 50%;
+  margin: ;
+  box-shadow: 0 0 450px 100px#008cb349;
+} */
+main {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  color: #fff;
+}
+main section:last-of-type {
+  margin-top: 15vh;
+  width: 50%;
+}
+main section:first-of-type {
+  width: 35%;
+  margin-top: 15vh;
+}
+.large-color {
+  color: #fff;
+}
+.small-color {
+  color: #cfd6d9;
+}
+.large-size {
+  font-size: 4em;
+  font-weight: 200;
+}
+.small-size {
+  font-size: 1.1em;
+}
+.option {
+  display: inline;
+  color: #cfd6d9;
+  font-size: 0.8em;
+}
+h1 {
+  font-weight: 400 !important;
+}
+h2 {
+  font-size: 2em;
+  font-weight: 400;
+}
+.form-mail {
+  background-color: #202020;
+  border-radius: 20px;
+  border: #444444 solid 2px;
+  padding: 30px;
+}
+form span {
+  width: 80%;
+  display: flex;
+  justify-content: start;
+}
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.input {
+  margin: 20px 0 20px 0;
+  position: relative;
+  display: block;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* border: #444444 solid 2px; */
+}
+.input-area {
+  width: 90%;
+  display: block;
+  position: relative;
+  background-color: #111111;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  z-index: 1;
+  margin-top: 1px;
+  outline: 0px;
+  transition: 0.3s;
+}
+.input-area::placeholder {
+  color: #ccc;
+  opacity: 0.7;
+}
+.input::before {
+  content: "";
+  position: absolute;
+  width: calc(90% + 2px);
+  height: calc(100% + 2px);
+  border-radius: 10px;
+  background-image: linear-gradient(to left, #06011d 20%, rgba(85, 94, 255, 0.85) 30%, rgba(85, 94, 255, 0.85) 70%, #06011d 80%, #06011d 100%);
+  transition: opacity 1.5s ease-out;
+}
+.input:has(.input-area:focus-visible)::before {
+  background-image: linear-gradient(to left, rgb(85, 93, 255) 100%);
+}
+.input-area:hover {
+  background-color: black;
+  box-shadow: -10px 0 15px 2px rgba(85, 94, 255, 0.4),
+   10px 0 15px 2px rgba(0, 140, 179, 0.4);
+}
+textarea {
+  resize: none !important;
+  overflow-y: auto;
+  min-height: 100px;
+  max-height: 2000px;
+  field-sizing: content;
+}
+.valid {
+  border: green 4px solid;
+}
+.submit {
+  background-color: #303030;
+  border: rgba(85, 94, 255, 0.80) solid 2px;
+  color: white;
+  width: 30%;
+  margin: 20px 0 10px 0;
+  justify-self: center;
+  padding: 10px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.submit:hover {
+  box-shadow: -10px 0 15px 2px #555eff8c,
+   10px 0 15px 2px rgba(0, 140, 179, 0.55);
+   background-color: black;
+}
+.invalid-email, 
+.invalid-subject, 
+.invalid-message {
+  position: relative;
+  transition: 0.3s;
+}
+.invalid-email.no::after, 
+.invalid-subject.no::after, 
+.invalid-message.no::after,
+.invalid-email.no::before, 
+.invalid-subject.no::before, 
+.invalid-message.no::before {
+  opacity: 0;
+}
+/* .invalid-email.show::after, 
+.invalid-subject.show::after, 
+.invalid-message.show::after,
+.invalid-email.show::before, 
+.invalid-subject.show::before, 
+.invalid-message.show::before {
+  opacity: 1;
+} */
+.invalid-email::after, 
+.invalid-subject::after, 
+.invalid-message::after {
+  position: absolute;
+  bottom: calc(100% + 18px);
+  left: 55%;
+  transform: translateX(-50%);
+  width: 65%;
+  max-width: 300px;
+  border-radius: 50px;
+  border: rgba(188, 0, 0, 0.8) 2px solid;
+  background-color: #21213a;
+  box-shadow: 0 10px 12px rgba(0,0,0,0.5);
+  text-align: center;
+  font-size: 0.8em;
+  padding: 5px;
+  z-index: 20;
+  color: #fff;
+  opacity: 1;
+  transition: opacity 1.5s ease-out;
+}
+.invalid-email::before, 
+.invalid-subject::before, 
+.invalid-message::before {
+  content: "";
+  border-style:solid;
+  border-width: 20px;
+  border-color: #21213a transparent transparent transparent;
+  border-radius: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: calc(100% - 20px);
+  left: 55%;
+  transform: translateX(-50%);
+  z-index: 30;
+  opacity: 1;
+  transition: opacity 1.5s ease-out;
+}
+.invalid-email::after {
+  content: "Please enter a valid email format \2757 \2757";
+}
+.invalid-subject::after {
+  content: "Subject must be at least 3 characters \2757 \2757";
+}
+.invalid-message::after {
+  content: "Message must be at least 10 characters \2757 \2757";
+}
+@media (max-width: 1100px) {
+  .invalid-email::after, 
+  .invalid-subject::after, 
+  .invalid-message::after { 
+    width: 55%;
+  }
+  main section:last-of-type {
+  width: 90%;
+  margin-bottom: 60px;
+  }
+main section:first-of-type {
+  width: 90%;
+  }
+}
+@media (max-width: 700px) {
+  h1 {
+    font-size: 2.5em !important;
+  }
+  h2, .input, .input-area, form span{
+    width: 100%;
+  }
+  .input {
+    margin: 30px 0 20px 0;
+  }
+  .input::before {
+    width: calc(100% + 2px);
+  }
+  .input-area {
+    font-size: 0.8em;
+  }
+  .submit{
+    width: 60%;
+  }
+  .invalid-email::after, 
+  .invalid-subject::after, 
+  .invalid-message::after {
+    font-size: 0.6em;
+    bottom: calc(100% + 13px);
+  }
+  .invalid-email::before, 
+  .invalid-subject::before, 
+  .invalid-message::before { 
+    width: 0 !important;
+    border-width: 15px;
+    bottom: calc(100% - 15px);
+  }
+}

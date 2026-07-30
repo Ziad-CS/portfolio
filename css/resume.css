@@ -1,0 +1,101 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+main section:first-of-type {
+  width: 100%;
+  height: fit-content;
+}
+.edu {
+  width: 45%;
+}
+.experience {
+  width: 45%;
+}
+.edu .first div,
+.experience .first div {
+  width: 100%;
+  padding: 0 0 0 30px;
+}
+.resume-title {
+  position: relative;
+  color: #fff;
+  padding: 10px;
+  margin: 20px 10px;
+}
+.resume-title::after {
+    content: '';
+    position: absolute;
+    height: 4px;
+    bottom: -4px;
+    left: 10px;
+    background-color: #008cb3;
+    width: 40px;
+}
+.progress-line {
+  position: relative;
+}
+.progress-line::before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: #06011d;
+  border: 2px solid #008cb3;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 2px;
+  z-index: 1;
+}
+.progress-line::after {
+  content: "";
+  display: inline-block;
+  height: calc(100% + 18px);
+  width: 2px;
+  background-color: rgba(7, 72, 105, 0.825);
+  position: absolute;
+  left: 6.5px;
+  top: 2px;
+  border-radius: 50px;
+}
+.first {
+  color: #fff;
+  padding-bottom: 20px;
+}
+.first ul {
+  padding-left: 10px;
+}
+.date {
+  display: inline-block;
+  color: rgb(13, 142, 206);
+  padding: 10px;
+  background-color: rgba(5, 56, 79, 0.286);
+  font-size: 0.9em;
+  font-weight: 600;
+  margin: 5px;
+}
+.progress-line h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+}
+.progress-line ul {
+  margin: 10px;
+}
+.progress-line li {
+  color: white;
+  margin: 10px 0;
+  font-weight: 400;
+}
+@media (max-width: 1100px) {
+  .edu,
+  .experience {
+    width: 90%;
+  }
+  .first ul {
+  padding: 0;
+  }
+}

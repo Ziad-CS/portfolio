@@ -1,0 +1,141 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
+.leftS {
+  width: 50%;
+  min-width: 300px;
+}
+.leftS:first-child {
+  margin-top: 25vh;
+}
+.leftS h1 {
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+}
+.leftS h1 span {
+  color: #008cb3;
+  font-size: 60px;
+}
+.career {
+  padding: 0 0 0 20px;
+}
+.career * {
+  display: inline;
+  font-weight: 400;
+  font-size: 25px;
+  color: #cfd6d9;
+}
+.career :last-child
+{
+  margin-left: -5px;
+}
+.career-name {
+  color: #008cb3;
+  font-size: 30px;
+}
+.typing {
+  color: #cfd6d9;
+  font-weight: 1;
+  font-size: 30px;
+}
+.leftS div {
+  padding: 20px;
+}
+.leftS a {
+  font-weight: 800;
+  height: 50px;
+  width: 200px;
+  margin: 20px;
+  border: #008cb3 solid 2px;
+  border-radius: 50px;
+  transition: background-color 0.5s, color 0.5s, margin-bottom 0.5s, transform 0.3s;
+  text-align: center;
+  text-transform: capitalize !important;
+}
+.button2 {
+  color: #008cb3 !important;
+}
+.button1 {
+  background-color: #008cb3 !important;
+}
+.button2:hover {
+  background-color: #008cb3 !important;
+  color: white !important;
+  border: 0px;
+  transform: translateY(-10%);
+}
+.button1:hover {
+  background-color: #005f7a !important;
+  border: 0px !important;
+  transform: translateY(-10%);
+}
+.rightS {
+  display: flex;
+  width: 50%;
+  min-width: 550px;
+  justify-content: center;
+}
+.leftS, .rightS {
+  margin-left: auto;
+  margin-right: auto;
+}
+.rightS img {
+  border-radius: 8%;
+  width: 500px;
+  height: 500px;
+  transition: scale 1s;
+  scale: 1 1;
+  margin: 25vh 0 10vh 0;
+  /* border-style: inset !important; */
+  box-shadow: 0px 0px 30px 2px rgba(0, 191, 255, 0.528);
+  border-width: thick;
+  border-color: #004444;
+}
+.rightS img:hover {
+  scale: 1.05 1.05;
+}
+@media (max-width: 1100px) {
+  .leftS {
+    width: 100%;
+    height: fit-content;
+    margin-top: 0 !important;
+  }
+  .rightS {
+    order: -1;
+  }
+  .rightS img {
+    margin-bottom: 0;
+  }
+  .leftS {
+    text-align: center;
+  }
+}
+@media (max-width: 700px) {
+  .leftS h1 span {
+  font-size: 51px;
+  }
+  .leftS h1 {
+  font-size: 40px;
+  }
+  .align {
+    align-content: flex-start;
+  }
+  .leftS {
+    width: 100%;
+    height: fit-content;
+  }
+  .leftS:first-child {
+    margin-top: 10vh;
+  }
+  .rightS {
+    min-width: 350px;
+  }
+  .rightS img {
+    width: 250px;
+    height: 250px;
+    margin-top: 10vh;
+  }
+}
