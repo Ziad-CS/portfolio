@@ -140,9 +140,18 @@ textarea {
 }
 .check {
   width: 90%;
+  transition: border 1s;
 }
 .check div {
   margin: 0 auto;
+}
+.red-border {
+  border: rgba(188, 0, 0, 0.8) 5px solid;
+  transition: border 1s;
+}
+.border-hide {
+  border: rgba(188, 0, 0, 0) 5px solid;
+  transition: border 1s;
 }
 .invalid-email, 
 .invalid-subject, 

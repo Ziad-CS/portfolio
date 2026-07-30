@@ -8,6 +8,10 @@ let firstSection = document.getElementById("input1");
 let secSection = document.getElementById("input2");
 let thirdSection = document.getElementById("input3");
 
+// reCAPTCHA
+let box = false;
+let border = document.getElementById("checkboxx");
+
 emailjs.init({publicKey: 'cHZhS615f6P5OsWk0'});
 
 function errorhide(obj, classname) {
@@ -30,8 +34,27 @@ function errorshow(obj, classname) {
     setTimeout(errorshow, 1, obj, classname);
   }
 }
+function removeBorder() {
+  if (border.classList.contains("border-hide"))
+  {
+    border.classList.remove("red-border");
+    border.classList.remove("border-hide")
+  }
+  else {
+    border.classList.add("border-hide");
+    setTimeout(removeBorder, 1000)
+  }
+}
 
-let firstTimer, secTimer, thirdTimer;
+function onCaptchaSuccess() {
+  box = true; 
+}
+function onCaptchaExpired() {
+  box = false;
+}
+
+
+let firstTimer, secTimer, thirdTimer, boxTimer;
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; //L
 
@@ -45,29 +68,27 @@ form.addEventListener("submit", (e) => {
   fullName.value =  fullName.value.trim();
 
   if (emailRegex.test(email.value.trim())) { //L
-    console.log("email");
     email.value = email.value.trim();
     emailValid = true;
   }
   else {
     clearTimeout(firstTimer);
     // change after contant need
-    console.log("email bug");
     errorshow(firstSection, "invalid-email");
-    firstTimer = setTimeout(errorhide, 10000, firstSection, "invalid-email");
+    firstTimer = setTimeout(errorhide, 5000, firstSection, "invalid-email");
   }
+
   if (subject.value.trim().length >= 3) {
-    console.log("subject");
     subject.value = subject.value.trim();
     subjectValid = true;
   }
   else {
     clearTimeout(secTimer);
     // change after contant need
-    console.log("subject bug");
     errorshow(secSection, "invalid-subject");
-    secTimer = setTimeout(errorhide, 10000, secSection, "invalid-subject");
+    secTimer = setTimeout(errorhide, 5000, secSection, "invalid-subject");
   }
+
   if (message.value.trim().length > 10) {
     console.log("message");
     message.value = message.value.trim();
@@ -76,14 +97,20 @@ form.addEventListener("submit", (e) => {
   else {
     clearTimeout(thirdTimer);
     // change after contant need
-    console.log("message bug");
     errorshow(thirdSection, "invalid-message");
-    thirdTimer = setTimeout(errorhide, 10000, thirdSection, "invalid-message");
+    thirdTimer = setTimeout(errorhide, 5000, thirdSection, "invalid-message");
   }
 
-  if (emailValid === true && subjectValid === true && messageValid === true) {
+  if (!box) {
+    clearTimeout(boxTimer);
+    border.classList.add("red-border");
+    boxTimer = setTimeout(removeBorder, 5000);
+  }
+
+  if (emailValid === true && subjectValid === true && messageValid === true && box === true) {
     console.log("no bug");
     emailjs.sendForm('ziad.saleh.dev', 'template_tvy8a3p', form);
+    fullName.value = "";
     email.value = "";
     subject.value = "";
     message.value = "";
