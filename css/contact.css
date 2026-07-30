@@ -122,6 +122,7 @@ textarea {
   border: green 4px solid;
 }
 .submit {
+  display: inline-block;
   background-color: #303030;
   border: rgba(85, 94, 255, 0.80) solid 2px;
   color: white;
@@ -136,6 +137,12 @@ textarea {
   box-shadow: -10px 0 15px 2px #555eff8c,
    10px 0 15px 2px rgba(0, 140, 179, 0.55);
    background-color: black;
+}
+.check {
+  width: 90%;
+}
+.check div {
+  margin: 0 auto;
 }
 .invalid-email, 
 .invalid-subject, 
@@ -239,6 +246,11 @@ main section:first-of-type {
   }
   .submit{
     width: 60%;
+  }
+  .check div {
+    scale: 0.9;
+    margin: auto;
+    transform: translateX(-25px);
   }
   .invalid-email::after, 
   .invalid-subject::after, 
