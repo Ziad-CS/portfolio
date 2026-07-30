@@ -139,7 +139,10 @@ textarea {
    background-color: black;
 }
 .check {
-  width: 90%;
+  width: 50%;
+  min-width: 400px;
+  margin: 0 100px;
+  padding: 5px;
   transition: border 1s;
 }
 .check div {
@@ -147,6 +150,7 @@ textarea {
 }
 .red-border {
   border: rgba(188, 0, 0, 0.8) 5px solid;
+  border-radius: 50px;
   transition: border 1s;
 }
 .border-hide {
@@ -256,10 +260,12 @@ main section:first-of-type {
   .submit{
     width: 60%;
   }
+  .check {
+    min-width: 320px;
+  }
   .check div {
     scale: 0.9;
     margin: auto;
-    transform: translateX(-25px);
   }
   .invalid-email::after, 
   .invalid-subject::after, 
