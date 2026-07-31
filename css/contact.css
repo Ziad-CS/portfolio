@@ -101,7 +101,7 @@ form {
   height: calc(100% + 2px);
   border-radius: 10px;
   background-image: linear-gradient(to left, #06011d 20%, rgba(85, 94, 255, 0.85) 30%, rgba(85, 94, 255, 0.85) 70%, #06011d 80%, #06011d 100%);
-  transition: opacity 1.5s ease-out;
+  transition: opacity 1s ease-out;
 }
 .input:has(.input-area:focus-visible)::before {
   background-image: linear-gradient(to left, rgb(85, 93, 255) 100%);
@@ -121,14 +121,18 @@ textarea {
 .valid {
   border: green 4px solid;
 }
+.input-submit {
+  display: inline-block;
+  width: 30%;
+  margin: 20px 0 10px 0;
+  justify-self: center;
+}
 .submit {
   display: inline-block;
   background-color: #303030;
   border: rgba(85, 94, 255, 0.80) solid 2px;
   color: white;
-  width: 30%;
-  margin: 20px 0 10px 0;
-  justify-self: center;
+  width: 100%;
   padding: 10px;
   border-radius: 10px;
   transition: 0.3s;
@@ -141,14 +145,14 @@ textarea {
 .check {
   width: 50%;
   min-width: 400px;
-  margin: 0 100px;
+  margin: 50px 100px 0;
   padding: 5px;
   transition: border 1s;
 }
 .check div {
   margin: 0 auto;
 }
-.red-border {
+/* .red-border {
   border: rgba(188, 0, 0, 0.8) 5px solid;
   border-radius: 50px;
   transition: border 1s;
@@ -156,19 +160,25 @@ textarea {
 .border-hide {
   border: rgba(188, 0, 0, 0) 5px solid;
   transition: border 1s;
-}
+} */
 .invalid-email, 
 .invalid-subject, 
-.invalid-message {
+.invalid-message,
+.invalid-reCAPTCHA,
+.success {
   position: relative;
   transition: 0.3s;
 }
 .invalid-email.no::after, 
 .invalid-subject.no::after, 
 .invalid-message.no::after,
+.invalid-reCAPTCHA.no::after,
 .invalid-email.no::before, 
 .invalid-subject.no::before, 
-.invalid-message.no::before {
+.invalid-message.no::before,
+.invalid-reCAPTCHA.no::before,
+.success.no::after,
+.success.no::before {
   opacity: 0;
 }
 /* .invalid-email.show::after, 
@@ -181,7 +191,8 @@ textarea {
 } */
 .invalid-email::after, 
 .invalid-subject::after, 
-.invalid-message::after {
+.invalid-message::after,
+.invalid-reCAPTCHA::after {
   position: absolute;
   bottom: calc(100% + 18px);
   left: 55%;
@@ -198,11 +209,12 @@ textarea {
   z-index: 20;
   color: #fff;
   opacity: 1;
-  transition: opacity 1.5s ease-out;
+  transition: opacity 1s ease-out;
 }
 .invalid-email::before, 
 .invalid-subject::before, 
-.invalid-message::before {
+.invalid-message::before,
+.invalid-reCAPTCHA::before {
   content: "";
   border-style:solid;
   border-width: 20px;
@@ -216,7 +228,43 @@ textarea {
   transform: translateX(-50%);
   z-index: 30;
   opacity: 1;
-  transition: opacity 1.5s ease-out;
+  transition: opacity 1s ease-out;
+}
+.success::after {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65%;
+  min-width: 220px;
+  /* max-width: 500px; */
+  border-radius: 50px;
+  border: #4ADE80 2px solid;
+  background-color: #21213a;
+  box-shadow: 0 -10px 22px 8px rgba(0,0,0,0.7);
+  text-align: center;
+  font-size: 0.8em;
+  padding: 5px;
+  z-index: 20;
+  color: #fff;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+.success::before {
+  content: "";
+  border-style:solid;
+  border-width: 20px;
+  border-color: transparent transparent #21213a transparent;
+  border-radius: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: calc(100% - 20px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
 }
 .invalid-email::after {
   content: "Please enter a valid email format \2757 \2757";
@@ -227,10 +275,18 @@ textarea {
 .invalid-message::after {
   content: "Message must be at least 10 characters \2757 \2757";
 }
+.invalid-reCAPTCHA::after {
+  content: "Please verify that you're not a robot \2757 \2757";
+}
+.success::after {
+  content: "Message sent successfully \2705";
+}
 @media (max-width: 1100px) {
   .invalid-email::after, 
   .invalid-subject::after, 
-  .invalid-message::after { 
+  .invalid-message::after,
+  .invalid-reCAPTCHA::after,
+  .success::after { 
     width: 55%;
   }
   main section:last-of-type {
@@ -257,7 +313,7 @@ main section:first-of-type {
   .input-area {
     font-size: 0.8em;
   }
-  .submit{
+  .input-submit{
     width: 60%;
   }
   .check {
@@ -269,15 +325,26 @@ main section:first-of-type {
   }
   .invalid-email::after, 
   .invalid-subject::after, 
-  .invalid-message::after {
+  .invalid-message::after,
+  .invalid-reCAPTCHA::after {
     font-size: 0.6em;
     bottom: calc(100% + 13px);
   }
   .invalid-email::before, 
   .invalid-subject::before, 
-  .invalid-message::before { 
+  .invalid-message::before,
+  .invalid-reCAPTCHA::before { 
     width: 0 !important;
     border-width: 15px;
     bottom: calc(100% - 15px);
+  }
+  .success::after {
+    font-size: 0.6em;
+    top: calc(100% + 13px);
+  }
+  .success::before {
+    width: 0 !important;
+    border-width: 15px;
+    top: calc(100% - 15px);
   }
 }

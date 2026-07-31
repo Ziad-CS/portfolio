@@ -3,6 +3,7 @@ let fullName = document.getElementById("fullName");
 let email = document.getElementById("mail");
 let subject = document.getElementById("subj");
 let message = document.getElementById("text");
+let submitBtn = document.getElementById("submitBtn");
 
 let firstSection = document.getElementById("input1");
 let secSection = document.getElementById("input2");
@@ -20,7 +21,7 @@ function errorhide(obj, classname) {
   }
   else {
     obj.classList.add("no");
-    setTimeout(errorhide, 1000, obj, classname);
+    setTimeout(errorhide, 500, obj, classname);
   }
 }
 function errorshow(obj, classname) {
@@ -54,7 +55,7 @@ function onCaptchaExpired() {
 }
 
 
-let firstTimer, secTimer, thirdTimer, boxTimer;
+let firstTimer, secTimer, thirdTimer, boxTimer, delayboxTimer, successTimer, delaySuccessTimer;
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; //L
 
@@ -103,8 +104,13 @@ form.addEventListener("submit", (e) => {
 
   if (!box) {
     clearTimeout(boxTimer);
-    border.classList.add("red-border");
-    boxTimer = setTimeout(removeBorder, 5000);
+    clearTimeout(delayboxTimer);
+    setTimeout(errorhide, 3000, submitBtn, "success")
+    delayboxTimer = setTimeout(errorshow, 4000, border, "invalid-reCAPTCHA");
+    // border.classList.add("red-border");
+
+    // boxTimer = setTimeout(removeBorder, 5000);
+    boxTimer = setTimeout(errorhide, 5000, border, "invalid-reCAPTCHA");
   }
 
   if (emailValid === true && subjectValid === true && messageValid === true && box === true) {
@@ -117,6 +123,13 @@ form.addEventListener("submit", (e) => {
     errorhide(firstSection, "invalid-email");
     errorhide(secSection, "invalid-subject");
     errorhide(thirdSection, "invalid-message");
+    errorhide(border, "invalid-reCAPTCHA")
+
+    clearTimeout(successTimer);
+    clearTimeout(delaySuccessTimer);
+
+    delaySuccessTimer = setTimeout(errorshow, 1000, submitBtn, "success");
+    successTimer = setTimeout(errorhide, 10000, submitBtn, "success");
   }
 
 });
