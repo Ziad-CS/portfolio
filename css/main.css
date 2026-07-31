@@ -16,10 +16,6 @@ body {
   overflow-x: hidden;
   width: 100%;
 }
-html {
-  overflow-x: hidden;
-  width: 100%;
-}
 body::before,
 body::after {
     content: "";
