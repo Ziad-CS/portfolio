@@ -70,6 +70,18 @@
   background-color: rgba(5, 56, 79, 0.4);
   transition: 0.3s;
 }
+.git {
+  font-size: 20px;
+  margin: 5px;
+  display: inline-block;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.5s;
+}
+.git:hover {
+  color: #00a0cc;
+  scale: 1.2 1.2;
+}
 @media (max-width: 1100px) {
   .projects-sec {
     grid-template-columns: repeat(2 , minmax(300px , 1fr));

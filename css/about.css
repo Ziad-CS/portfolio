@@ -18,7 +18,7 @@ main section:nth-of-type(6) {
   margin: 0 0 10px 0;
   font-weight: 100;
   font-size: 1em;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 .hint article:first-of-type h3{
   color: #fff;
@@ -140,7 +140,8 @@ main section:nth-of-type(6) {
   left: 0;
 }
 .side {
-  width: 25%;
+  width: 85%;
+  max-width: 400px;
   min-width: 270px;
   padding: 20px;
   background-color: rgb(20, 31, 39);
@@ -175,6 +176,7 @@ main section:nth-of-type(6) {
   background-color: transparent;
   border: 5px solid #00a0cc;
   border-radius: 50%;
+  margin: auto;
 }
 .img img {
   position: absolute;
@@ -191,15 +193,15 @@ main section:nth-of-type(6) {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.side div:first-of-type p:first-of-type{
+.name-title {
   color:#f5fcff;
-  font-size: 2em;
+  font-size: 2em !important;
   font-weight: 400;
   line-height: 30px;
   letter-spacing: 3px;
   margin: 10px 0 0 0;
 }
-.side div:first-of-type p:last-of-type{
+.work-title {
   color:#00a0cc;
   font-size: 1.2em;
   font-weight: 400;
@@ -223,8 +225,9 @@ main section:nth-of-type(6) {
 }
 .exp p {
   color: #f5fcff;
-  font-size: 1.2em;
-  font-weight: 200;
+  font-size: 1.1em;
+  text-align: center;
+  font-weight: 400;
   margin-bottom: 0;
 }
 .resume {

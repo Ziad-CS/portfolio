@@ -3,6 +3,7 @@ let close = document.querySelector(".close");
 let menu = document.getElementById("nav");
 let body = document.getElementsByTagName("body");
 
+// console.log([...document.querySelectorAll('*')].filter(el => el.getBoundingClientRect().right > window.innerWidth || el.getBoundingClientRect().left < 0))
 
 
 open.addEventListener("click", function () {
