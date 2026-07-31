@@ -103,7 +103,7 @@ form.addEventListener("submit", (e) => {
   }
 
   if (!box) {
-    if (submitBtnclassList.contains("success")) {
+    if (submitBtn.classList.contains("success")) {
       clearTimeout(boxTimer);
       clearTimeout(delayboxTimer);
       setTimeout(errorhide, 3000, submitBtn, "success")
@@ -116,7 +116,7 @@ form.addEventListener("submit", (e) => {
     else {
       clearTimeout(boxTimer);
       clearTimeout(delayboxTimer);
-      delayboxTimer = setTimeout(errorshow, 1000, border, "invalid-reCAPTCHA");
+      errorshow(border, "invalid-reCAPTCHA");
       boxTimer = setTimeout(errorhide, 5000, border, "invalid-reCAPTCHA");
     }
   }
