@@ -103,14 +103,22 @@ form.addEventListener("submit", (e) => {
   }
 
   if (!box) {
-    clearTimeout(boxTimer);
-    clearTimeout(delayboxTimer);
-    setTimeout(errorhide, 3000, submitBtn, "success")
-    delayboxTimer = setTimeout(errorshow, 4000, border, "invalid-reCAPTCHA");
-    // border.classList.add("red-border");
+    if (submitBtnclassList.contains("success")) {
+      clearTimeout(boxTimer);
+      clearTimeout(delayboxTimer);
+      setTimeout(errorhide, 3000, submitBtn, "success")
+      delayboxTimer = setTimeout(errorshow, 4000, border, "invalid-reCAPTCHA");
+      // border.classList.add("red-border");
 
-    // boxTimer = setTimeout(removeBorder, 5000);
-    boxTimer = setTimeout(errorhide, 5000, border, "invalid-reCAPTCHA");
+      // boxTimer = setTimeout(removeBorder, 5000);
+      boxTimer = setTimeout(errorhide, 9000, border, "invalid-reCAPTCHA");
+    }
+    else {
+      clearTimeout(boxTimer);
+      clearTimeout(delayboxTimer);
+      delayboxTimer = setTimeout(errorshow, 1000, border, "invalid-reCAPTCHA");
+      boxTimer = setTimeout(errorhide, 5000, border, "invalid-reCAPTCHA");
+    }
   }
 
   if (emailValid === true && subjectValid === true && messageValid === true && box === true) {
